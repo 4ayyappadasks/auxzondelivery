@@ -13,7 +13,7 @@ class SplashscreenBloc extends Bloc<SplashscreenEvent, SplashscreenState> {
       emit(SplashscreenLoading());
       print("splashscreen Loading");
       try{
-        await Future.delayed(Duration(seconds: 2),() {
+        await Future.delayed(const Duration(seconds: 2),() {
           emit(SplashscreenAnimating());
           print("splashscreen Loaded");
         },);

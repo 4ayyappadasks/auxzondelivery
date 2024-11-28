@@ -1,8 +1,9 @@
 import 'package:auxzondeliveryapp/common/textfont/textfont.dart';
-import 'package:auxzondeliveryapp/presentation/home_page/ui/homescreen.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../main.dart';
+import '../../otp_screen/ui/Otp_screen.dart';
 
 class LoginScreenWrapper extends StatelessWidget {
   const LoginScreenWrapper({super.key});
@@ -16,8 +17,7 @@ class LoginScreenWrapper extends StatelessWidget {
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  var email = TextEditingController();
-  var password = TextEditingController();
+  var phonenumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,100 +25,94 @@ class LoginScreen extends StatelessWidget {
       canPop: false,
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),
-        body: Stack(
+        body: Column(
           children: [
-            ClipPath(
-              clipper: CustomClipPath(),
+            Expanded(
               child: Container(
-                height: MyApp.height*.7,
-                width: MyApp.width,
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF14358B),
-                      Color(0xFF1E50A2),
-                      Color(0xFF2877CC),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
+                    image: DecorationImage(
+                        image: AssetImage("assets/signupimage.png"),
+                        fit: BoxFit.cover)),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Image.asset(
-                  "assets/logo.png",
-                  height: MyApp.height * .2,
-                ),
-                const SizedBox(height: 30),
-                const TextThemedel(
-                  text: 'Welcome Back!',
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 24,
-                  textAlign: TextAlign.center,
-                  fontWeight: FontWeight.bold,
-                ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: TextField(
-                    controller: email,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.email),
-                      hintText: 'Email Address',
-                      filled: true,
-                      fillColor: Colors.grey[200],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
+            const ListTile(
+              title: TextThemedel(
+                text: 'Sign in to your account',
+                color: Color(0xFF000000),
+                fontSize: 24,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.bold,
+              ),
+              subtitle: TextThemedel(
+                text: 'Login or create an account',
+                color: Color(0xFFBABBBA),
+                fontSize: 10,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                controller: phonenumber,
+                decoration: InputDecoration(
+                  prefixIcon: const CountryCodePicker(
+                    onChanged: print,
+                    // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                    initialSelection: 'IN',
+                    favorite: ['+91','IN'],
+                    // optional. Shows only country name and flag
+                    showCountryOnly: false,
+                    // optional. Shows only country name and flag when popup is closed.
+                    showOnlyCountryWhenClosed: true,
+                    // optional. aligns the flag and the Text left
+                    alignLeft: false,
+                  ),
+                  hintText: 'XX-XX-XX-XX-XX',
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
                   ),
                 ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: TextField(
-                    controller: password,
-                    decoration: InputDecoration(
-                      filled: true,
-                      prefixIcon: const Icon(Icons.lock),
-                      hintText: 'Password',
-                      fillColor: Colors.grey[200],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                    obscureText: true,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                MaterialButton(
-                  elevation: 5,
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const HomescreenWrapper(),
-                    ));
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  color: const Color(0xFF14358C),
-                  minWidth: MyApp.width * .6,
-                  height: MyApp.height * .06,
-                  child: const TextThemedel(
-                    text: "Log In",
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+                keyboardType: TextInputType.emailAddress,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const TextThemedel(
+              text: 'Enter a valid 10 digit number you will receive an SMS verification code.',
+              color: Color(0xFFBABBBA),
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(height: 20),
+            MaterialButton(
+              elevation: 5,
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const OtpScreenWrapper(),
+                ));
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              color: const Color(0xff2fa134),
+              minWidth: MyApp.width * .6,
+              height: MyApp.height * .06,
+              child: const TextThemedel(
+                text: "Continue",
+                color: Color(0xFFFFFFFF),
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const TextThemedel(
+              text: 'By continuing , you aggree to our Terms & Conditions.',
+              color: Color(0xFFBABBBA),
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
             ),
           ],
         ),
@@ -126,33 +120,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-class CustomClipPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.moveTo(0, 0);
-    path.lineTo(0, size.height * 0.6);
-    path.quadraticBezierTo(
-      size.width * 0.25, // Control point X
-      size.height * 0.8, // Control point Y
-      size.width * 0.5,  // End point X
-      size.height * 0.8, // End point Y
-    );
-    path.quadraticBezierTo(
-      size.width * 0.75, // Control point X
-      size.height * 0.8, // Control point Y
-      size.width,        // End point X
-      size.height * 0.4, // End point Y
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-

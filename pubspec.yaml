@@ -46,6 +46,9 @@ dependencies:
   cached_network_image: ^3.4.1
   google_fonts: ^6.2.1
   introduction_screen: ^3.1.14
+  country_code_picker: ^3.1.0
+  flutter_otp_text_field: ^1.2.0
+  animated_toggle_switch: ^0.8.3
 
 dev_dependencies:
   flutter_test:

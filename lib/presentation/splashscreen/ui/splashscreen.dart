@@ -1,6 +1,5 @@
 import 'package:auxzondeliveryapp/common/textfont/textfont.dart';
 import 'package:auxzondeliveryapp/main.dart';
-import 'package:auxzondeliveryapp/presentation/login_page/ui/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,16 +44,17 @@ class Splashscreen extends StatelessWidget {
                 Container(
                   height: MyApp.height,
                   width: MyApp.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFF14358B),
-                        Color(0xFF1E50A2),
-                        Color(0xFF2877CC),
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                    // gradient: LinearGradient(
+                    //   colors: [
+                    //     Color(0xFF0F5D25),
+                    //     Color(0xFF1EA23D),
+                    //     Color(0xFF8FE1A6),
+                    //   ],
+                    //   begin: Alignment.topCenter,
+                    //   end: Alignment.bottomCenter,
+                    // ),
                   ),
                 ),
                 AnimatedPositioned(
@@ -65,16 +65,16 @@ class Splashscreen extends StatelessWidget {
                   child: SizedBox(
                     width: MyApp.height * .3,
                     height: MyApp.height * .3,
-                    child: Image.asset("assets/logo.png"),
+                    child: Image.asset("assets/logo1.png"),
                   ),
                 ),
                 Positioned(
                     right: 0,
                     left: 0,
                     top: MyApp.height * .2,
-                    child: TextThemedel(
+                    child: const TextThemedel(
                       text: "Delivery Boy",
-                      color: Color(0xFFFFFFFF),
+                      color: Color(0xFF206734),
                       fontSize: 45,
                       textAlign: TextAlign.center,
                     )),
@@ -83,26 +83,26 @@ class Splashscreen extends StatelessWidget {
                   right: 0,
                   left: 0,
                   child: Container(
-                    child: Column(
+                    child: const Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
                         TextThemedel(
                           text: "Powered by",
-                          color: Color(0xFFFFFFFF),
+                          color:Color(0xFF206734),
                           fontSize: 10,
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.bold,
                         ),
                         TextThemedel(
                           text:  "Auxzon",
-                          color: Color(0xFFFFFFFF),
+                          color: Color(0xFF206734),
                           fontSize: 10,
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.bold,
                         ),
                         TextThemedel(
                           text: "©2023",
-                          color: Color(0xFFFFFFFF),
+                          color: Color(0xFF206734),
                           fontSize: 5,
                           textAlign: TextAlign.center,
                           fontWeight: FontWeight.bold,
