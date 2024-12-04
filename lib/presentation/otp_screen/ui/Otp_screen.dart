@@ -1,7 +1,7 @@
-import 'package:auxzondeliveryapp/presentation/home_page/ui/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import '../../../common/bottomsheet/ui/bottomsheet.dart';
 import '../../../common/textfont/textfont.dart';
 import '../../../main.dart';
 import '../../login_page/ui/login_screen.dart';
@@ -14,7 +14,7 @@ class OtpScreenWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => OtpscreenBloc(),
-      child: OtpScreen(),
+      child: const OtpScreen(),
     );
   }
 }
@@ -44,7 +44,7 @@ class OtpScreen extends StatelessWidget {
           final bloc = BlocProvider.of<OtpscreenBloc>(context);
           bool isContinueButtonVisible = state is Otpscreenenterd ||
               state is Otpcountdownstared;
-          bool isResendButtonVisible = state is Otpcountdowncompleted;
+          bool isResendButtonVisible = state is Otpcountdowncompleted || state is Otpscreenenterd;
           String? otp;
           String countdownText = '';
           if (state is Otpcountdownstared) {
@@ -92,7 +92,7 @@ class OtpScreen extends StatelessWidget {
                   elevation: 5,
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => HomescreenWrapper(),));
+                      builder: (context) => BottomsheetWrapper(),));
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
