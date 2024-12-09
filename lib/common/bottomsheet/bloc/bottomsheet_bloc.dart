@@ -16,10 +16,6 @@ class BottomsheetBloc extends Bloc<BottomsheetEvent, BottomsheetState> {
         }
       else if(event.pageno==2)
         {
-          emit(BookingScreen_State());
-        }
-      else if(event.pageno==3)
-        {
           emit(ProfileScreen_State());
         }
       else

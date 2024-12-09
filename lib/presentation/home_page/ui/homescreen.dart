@@ -1,11 +1,13 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:auxzondeliveryapp/common/color/color.dart';
+import 'package:auxzondeliveryapp/presentation/asign_orders/ui/Asignedorders.dart';
 import 'package:auxzondeliveryapp/presentation/home_page/bloc/homescreen_bloc.dart';
+import 'package:auxzondeliveryapp/presentation/notification/ui/notificationscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../common/textfont/textfont.dart';
 import '../../../main.dart';
+import '../widgets/showbottosheet/ui/showbottomsheetss.dart';
 
 class HomescreenWrapper extends StatelessWidget {
   const HomescreenWrapper({super.key});
@@ -22,8 +24,6 @@ class HomescreenWrapper extends StatelessWidget {
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
 
-  // String _current = "online";
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomescreenBloc, HomescreenState>(
@@ -31,8 +31,7 @@ class Homescreen extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        // Determine the current status based on the state.
-        String currentStatus = "online"; // Default to online.
+        String currentStatus = "online";
         if (state is Homescreenstatusonline) {
           currentStatus = state.status;
         } else if (state is Homescreenstsusoffline) {
@@ -58,7 +57,7 @@ class Homescreen extends StatelessWidget {
                       elevation: 5,
                       borderRadius: BorderRadius.circular(30),
                       child: SizedBox(
-                        height: MyApp.height * .05,
+                        height: MyApp.height * .04,
                         width: MyApp.width * .25,
                         child: AnimatedToggleSwitch.dual(
                             borderWidth: 1,
@@ -82,26 +81,32 @@ class Homescreen extends StatelessWidget {
                             },
                             textBuilder: (value) => value
                                 ? const TextThemedel(
-                              text: "Online",
-                              color: Color(0xFFFFFFFF),
-                              fontWeight: FontWeight.bold,
-                            )
+                                    text: "Online",
+                                    color: Color(0xFFFFFFFF),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  )
                                 : TextThemedel(
-                              text: "Offline",
-                              color: Color(0xFF8C8C8C),
-                              fontWeight: FontWeight.bold,
-                            )),
+                                    text: "Offline",
+                                    color: Color(0xFF8C8C8C),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  )),
                       ),
                     ),
                     const Spacer(),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => NotificationscreenWrapper(),
+                          ));
+                        },
                         icon: const Badge(
                             label: Text("5"),
                             child: Icon(Icons.notifications))),
                     IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.help_outline))
+                        onPressed: () {}, icon: const Icon(Icons.help_outline))
                   ],
                 ),
               ),
@@ -115,105 +120,101 @@ class Homescreen extends StatelessWidget {
                   child: Container(
                     height: MyApp.height * .25,
                     width: MyApp.width,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: MyApp.width * .05),
                     decoration: BoxDecoration(
                         color: Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(10)),
                     child: Row(
                       children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextThemedel(
-                              text: '14',
-                              color: Colorsdata.darkcolor,
-                              fontSize: 64,
-                              textAlign: TextAlign.center,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            TextThemedel(
-                              text: 'TUESDAY',
-                              color: Color(0xFF000000),
-                              fontSize: 24,
-                              textAlign: TextAlign.center,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ],
-                        ),
-                        TextThemedel(
-                          text: 'FEB 2023',
-                          color: Color(0xFFA9A9A9),
-                          fontSize: 16,
-                          textAlign: TextAlign.center,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        VerticalDivider(),
-                        Spacer(),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextThemedel(
-                              text: "Status",
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF000000),
-                              decoration: TextDecoration.underline,
-                            ),
-                            Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
+                        Expanded(
+                            flex: 2,
+                            child: Column(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      TextThemedel(text: "Earnings"),
-                                      TextThemedel(
-                                        text: "Rs.200",
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colorsdata.darkcolor,
-                                      )
-                                    ],
-                                  ),
+                                TextThemedel(
+                                  text: '14',
+                                  color: Colorsdata.darkcolor,
+                                  fontSize: 64,
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      TextThemedel(text: "Trips"),
-                                      TextThemedel(
-                                        text: "12",
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colorsdata.darkcolor,
-                                      )
-                                    ],
-                                  ),
+                                TextThemedel(
+                                  text: 'TUESDAY',
+                                  color: Color(0xFF000000),
+                                  fontSize: 20,
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      TextThemedel(text: "Login Hours"),
-                                      TextThemedel(
-                                        text: "4 hr",
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colorsdata.darkcolor,
-                                      )
-                                    ],
-                                  ),
+                                TextThemedel(
+                                  text: 'FEB 2023',
+                                  color: Color(0xFFA9A9A9),
+                                  fontSize: 16,
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ],
-                            ),
-                          ],
-                        ),
-                        Spacer(),
-                        SizedBox(
-                          width: 10,
-                        ),
+                            )),
+                        VerticalDivider(),
+                        Expanded(
+                            flex: 4,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextThemedel(
+                                    text: "Status",
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF000000),
+                                    fontSize: 25,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  FittedBox(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              TextThemedel(text: "Earnings"),
+                                              TextThemedel(
+                                                text: "Rs.200",
+                                                fontWeight: FontWeight.bold,
+                                                color: Colorsdata.darkcolor,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              TextThemedel(text: "Trips"),
+                                              TextThemedel(
+                                                text: "12",
+                                                fontWeight: FontWeight.bold,
+                                                color: Colorsdata.darkcolor,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              TextThemedel(text: "Login Hours"),
+                                              TextThemedel(
+                                                text: "4 hr",
+                                                fontWeight: FontWeight.bold,
+                                                color: Colorsdata.darkcolor,
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ]))
                       ],
                     ),
                   ),
@@ -234,7 +235,12 @@ class Homescreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => AsignedordersWrapper(),
+                          ));
+                        },
                         child: const TextThemedel(
                           text: "See All",
                           color: Color(0xFF000000),
@@ -255,23 +261,58 @@ class Homescreen extends StatelessWidget {
                     color: const Color(0xFFFFFFFF),
                     elevation: 10,
                     child: ListTile(
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       title: TextThemedel(
                         text: "Order no : #123456$index",
-                        color: const Color(0xFF000000),
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        color: Colorsdata.black,
+                        fontSize: 14,
                       ),
-                      subtitle: TextThemedel(
-                        text: "Location details",
-                        color: Colorsdata.midcolor,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextThemedel(
+                            text: "${index + 2} items",
+                            color: Colorsdata.midcolor,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          SizedBox(
+                            height: MyApp.height * .015,
+                          ),
+                          TextThemedel(
+                            text:
+                                "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                            color: Colorsdata.black,
+                            fontSize: 14,
+                          ),
+                        ],
                       ),
-                      trailing: TextThemedel(
-                        text: "${index + 2} itmes",
+                      trailing: MaterialButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            backgroundColor: Colorsdata.white,
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16)),
+                            ),
+                            builder: (context) => DeliveryDetailsBottomSheet(
+                              distance: "12 km",
+                              // Example data
+                              time: "25 minutes",
+                              // Example data
+                              address: "123 Main Street, Springfield, IL",
+                              // Example data
+                              orderNumber: "ORD12345", // Example data
+                            ),
+                          );
+                        },
                         color: Colorsdata.darkcolor,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        child: TextThemedel(
+                          text: "Accept",
+                          color: Colorsdata.white,
+                        ),
                       ),
                     ),
                   ),

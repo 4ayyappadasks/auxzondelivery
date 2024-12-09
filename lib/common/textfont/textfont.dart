@@ -26,7 +26,7 @@ class TextThemedel extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: GoogleFonts.adventPro(
+      style: GoogleFonts.openSans(
         fontSize: fontSize,
         color: color,
         fontWeight: fontWeight,

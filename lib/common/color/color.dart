@@ -8,4 +8,7 @@ class Colorsdata{
  static final black = Color(0xFF000000);
  static final white = Color(0xFFFFFFFF);
  static final unfocus = Color(0xFFDEDEDE);
+ static final darkunfocus = Color(0xFF6C6C6C);
+ static final liteunfocus = Color(0xFFF5F5F5);
+ static final error = Color(0xFFB00000);
 }
