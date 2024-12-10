@@ -1,6 +1,7 @@
 import 'package:auxzondeliveryapp/common/color/color.dart';
 import 'package:auxzondeliveryapp/common/textfont/textfont.dart';
 import 'package:auxzondeliveryapp/main.dart';
+import 'package:auxzondeliveryapp/presentation/history/ui/historyScreen.dart';
 import 'package:flutter/material.dart';
 
 class ProfilescreenWrapper extends StatelessWidget {
@@ -34,40 +35,41 @@ class Profilescreen extends StatelessWidget {
                   color: Colorsdata.white),
               child: Center(
                   child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage("assets/contacts.png"),
-                ),
-                title: TextThemedel(
-                  text: "Navien Babu",
-                  fontWeight: FontWeight.bold,
-                ),
-                subtitle: TextThemedel(text: "98 76 54 32 10"),
-                trailing: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  height: MyApp.height * .03,
-                  decoration: BoxDecoration(
-                      color: Colorsdata.midcolor,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: FittedBox(
-                      child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextThemedel(
-                        text: "4.5",
-                        color: Colorsdata.white,
-                        fontSize:
-                            ((MyApp.height * .005) * (MyApp.width * .003)),
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colorsdata.white,
-                        size: ((MyApp.height * .01) * (MyApp.width * .003)),
-                      )
-                    ],
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage("assets/contacts.png"),
+                    ),
+                    title: TextThemedel(
+                      text: "Navien Babu",
+                      fontWeight: FontWeight.bold,
+                    ),
+                    subtitle: TextThemedel(text: "98 76 54 32 10"),
+                    trailing: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      height: MyApp.height * .03,
+                      decoration: BoxDecoration(
+                          color: Colorsdata.midcolor,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: FittedBox(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextThemedel(
+                                text: "4.5",
+                                color: Colorsdata.white,
+                                fontSize:
+                                ((MyApp.height * .005) * (MyApp.width * .003)),
+                              ),
+                              Icon(
+                                Icons.star,
+                                color: Colorsdata.white,
+                                size: ((MyApp.height * .01) *
+                                    (MyApp.width * .003)),
+                              )
+                            ],
+                          )),
+                    ),
                   )),
-                ),
-              )),
             ),
           ),
           SizedBox(
@@ -96,7 +98,7 @@ class Profilescreen extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Colorsdata.white,),
+                    color: Colorsdata.white,),
                   child: ListTile(
                     leading: Icon(Icons.privacy_tip),
                     title: TextThemedel(text: "Privacy policies"),
@@ -107,11 +109,26 @@ class Profilescreen extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
+                    color: Colorsdata.white,),
+                  child: ListTile(
+                    leading: Icon(Icons.history_outlined),
+                    title: TextThemedel(text: "History"),
+                    trailing: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (context) =>
+                                  HistoryscreenWidget(),));
+                        },
+                        icon: Icon(Icons.arrow_forward_ios_sharp)),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
                       color: Colorsdata.white,
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15),
-                    )
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                      )
                   ),
                   child: ListTile(
                     leading: Icon(Icons.question_mark_rounded),

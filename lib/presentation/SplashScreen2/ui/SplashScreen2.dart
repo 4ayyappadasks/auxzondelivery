@@ -18,6 +18,16 @@ class OnBoardingPage extends StatelessWidget {
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
+
+    Widget buildImage(String assetName) {
+      return SizedBox.expand(
+        child: Image.asset(
+          assetName,
+          fit: BoxFit.cover,
+        ),
+      );
+    }
+
     return IntroductionScreen(
       globalBackgroundColor: Colors.white,
       allowImplicitScrolling: true,
@@ -26,46 +36,48 @@ class OnBoardingPage extends StatelessWidget {
       pages: [
         PageViewModel(
           title: "Book a ride in seconds",
-          body:
-          "Choose your destination, select a ride, and you're ready to go.",
-          image: Image.asset("assets/splashimage1.png"),
+          body: "Choose your destination, select a ride, and you're ready to go.",
+          image: buildImage("assets/splashimage1.png"),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Your safety is our priority",
-          body:
-          "All drivers are verified,and ride are monitored for your piece of mind.",
-          image: Image.asset("assets/splashimage2.png",),
+          body: "All drivers are verified, and rides are monitored for your peace of mind.",
+          image: buildImage("assets/splashimage2.png"),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Track your orders",
-          body:
-          "Track your orders.",
-          image: Image.asset("assets/splashimage3.png"),
+          body: "Track your orders.",
+          image: buildImage("assets/splashimage3.png"),
           decoration: pageDecoration,
         ),
       ],
       onDone: () {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginScreenWrapper(),));
+          MaterialPageRoute(builder: (context) => const LoginScreenWrapper()),
+        );
       },
       onSkip: () {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginScreenWrapper(),));
+          MaterialPageRoute(builder: (context) => const LoginScreenWrapper()),
+        );
       },
-      // You can override onSkip callback
       showSkipButton: true,
       skipOrBackFlex: 0,
       nextFlex: 0,
       showBackButton: false,
-      //rtl: true, // Display as right-to-left
-      // back: const Icon(Icons.arrow_back,color: Color(0xFF14358C),),
       skip: const TextThemedel(
-        text: "skip", color: Color(0xFFFFFFFF), fontWeight: FontWeight.bold,),
-      next: const Icon(Icons.arrow_forward, color: Color(0xFFFFFFFF),),
+        text: "skip",
+        color: Color(0xFFFFFFFF),
+        fontWeight: FontWeight.bold,
+      ),
+      next: const Icon(Icons.arrow_forward, color: Color(0xFFFFFFFF)),
       done: const TextThemedel(
-        text: "Done", color: Color(0xFFFFFFFF), fontWeight: FontWeight.bold,),
+        text: "Done",
+        color: Color(0xFFFFFFFF),
+        fontWeight: FontWeight.bold,
+      ),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
