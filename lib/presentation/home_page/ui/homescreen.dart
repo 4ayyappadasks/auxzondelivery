@@ -60,38 +60,45 @@ class Homescreen extends StatelessWidget {
                         height: MyApp.height * .04,
                         width: MyApp.width * .25,
                         child: AnimatedToggleSwitch.dual(
-                            borderWidth: 1,
-                            style: ToggleStyle(
-                                indicatorColor: const Color(0xFFFFFFFF),
-                                backgroundColor: currentStatus == "online"
-                                    ? Colorsdata.midcolor
-                                    : Color(0xFFD9D9D9),
-                                borderColor: const Color(0xFFCCCCCC)),
-                            current: currentStatus == "online",
-                            first: false,
-                            // Represents "offline".
-                            second: true,
-                            // Represents "online".
-                            onChanged: (value) {
-                              // Dispatch the toggle event with the new status.
-                              String newStatus = value ? "online" : "offline";
-                              context
-                                  .read<HomescreenBloc>()
-                                  .add(togglestatus(status: newStatus));
-                            },
-                            textBuilder: (value) => value
-                                ? const TextThemedel(
-                                    text: "Online",
-                                    color: Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                  )
-                                : TextThemedel(
-                                    text: "Offline",
-                                    color: Color(0xFF8C8C8C),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                  )),
+                          indicatorSize: Size.fromRadius(
+                              (MyApp.height * .007) * (MyApp.width * .0065)),
+                          borderWidth: 1,
+                          style: ToggleStyle(
+                            indicatorColor: Colorsdata.white,
+                            indicatorBorder: Border.all(
+                              color: currentStatus == "online"
+                                  ? Colorsdata.midcolor
+                                  : Colorsdata.darkunfocus,
+                              width: 2,
+                            ),
+                            backgroundColor: currentStatus == "online"
+                                ? Colorsdata.midcolor
+                                : Colorsdata.unfocus,
+                            borderColor: Colorsdata.darkunfocus,
+                          ),
+                          current: currentStatus == "online",
+                          first: false,
+                          second: true,
+                          onChanged: (value) {
+                            String newStatus = value ? "online" : "offline";
+                            context
+                                .read<HomescreenBloc>()
+                                .add(togglestatus(status: newStatus));
+                          },
+                          textBuilder: (value) => value
+                              ? TextThemedel(
+                                  text: "Online",
+                                  color: Colorsdata.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                )
+                              : TextThemedel(
+                                  text: "Offline",
+                                  color: Colorsdata.darkunfocus,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10,
+                                ),
+                        ),
                       ),
                     ),
                     const Spacer(),

@@ -99,237 +99,264 @@ class Historyscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        backgroundColor: Colorsdata.white,
-        appBar: AppBar(
-          forceMaterialTransparency: true,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colorsdata.black),
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const BottomsheetWrapper(pageno: 2),
-              ));
-            },
-          ),
-          title: TextThemedel(
-            text: "Histories",
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Colorsdata.black,
-          ),
-          centerTitle: true,
-          bottom: TabBar(
-            labelColor: Colorsdata.black,
-            unselectedLabelColor: Colorsdata.unfocus,
-            indicatorColor: Colorsdata.midcolor,
-            tabs: const [
-              Tab(text: "Assigned"),
-              Tab(text: "Completed"),
-              Tab(text: "Cancelled"),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            Center(
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(8),
-                itemCount: 20,
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => OrderdetailsscreenWrapper(
-                        tab: 1,
-                          orderNumber: "#123456$index",
-                          items: "2",
-                          address: "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
-                          distance: "12 km",
-                          time: "25 minutes",),
-                    ));
-                  },
-                  child: Card(
-                    color: const Color(0xFFFFFFFF),
-                    elevation: 10,
-                    child: ListTile(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      title: TextThemedel(
-                        text: "Order no : #123456$index",
-                        color: Colorsdata.black,
-                        fontSize: 14,
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextThemedel(
-                            text: "${index + 2} items",
-                            color: Colorsdata.midcolor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          SizedBox(
-                            height: MyApp.height * .015,
-                          ),
-                          TextThemedel(
-                              text:
-                                  "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
-                              color: Colorsdata.black,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 14),
-                        ],
-                      ),
-                      trailing: index.isEven
-                          ? MaterialButton(
-                              onPressed: () {
-                                _showConfirmationBottomSheet(context);
-                              },
-                              color: Colorsdata.darkcolor,
-                              child: TextThemedel(
-                                text: "Complete Task",
-                                color: Colorsdata.white,
-                              ),
-                            )
-                          : MaterialButton(
-                              onPressed: () {
-                                showModalBottomSheet(
-                                  backgroundColor: Colorsdata.white,
-                                  context: context,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(16)),
-                                  ),
-                                  builder: (context) =>
-                                      DeliveryDetailsBottomSheet(
-                                    distance: "12 km",
-                                    // Example data
-                                    time: "25 minutes",
-                                    // Example data
-                                    address: "123 Main Street, Springfield, IL",
-                                    // Example data
-                                    orderNumber: "ORD12345", // Example data
-                                  ),
-                                );
-                              },
-                              color: Colorsdata.darkcolor,
-                              child: TextThemedel(
-                                text: "Accept",
-                                color: Colorsdata.white,
-                              ),
-                            ),
+        length: 3,
+        child: Builder(builder: (context) {
+          final TabController tabController = DefaultTabController.of(context)!;
+
+          // Listen for both tap and slide changes
+          tabController.addListener(() {
+            if (!tabController.indexIsChanging) {
+              // Triggers when sliding between tabs
+              print("Current history Tab Index (Slide): ${tabController.index}");
+            } else {
+              // Triggers when tapping on tabs
+              print("Current history Tab Index (Tap): ${tabController.index}");
+            }
+          });
+
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              forceMaterialTransparency: true,
+              elevation: 0,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => BottomsheetWrapper(
+                      pageno: 2,
                     ),
-                  ),
+                  ));
+                },
+              ),
+              title: const Text(
+                "Histories",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.black,
                 ),
               ),
+              centerTitle: true,
+              bottom: TabBar(
+                labelColor: Colorsdata.black,
+                unselectedLabelColor: Colorsdata.unfocus,
+                indicatorColor: Colorsdata.midcolor,
+                tabs: [
+                  Tab(text: "Assigned"),
+                  Tab(text: "Completed"),
+                  Tab(text: "Cancelled"),
+                ],
+              ),
             ),
-            Center(
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(8),
-                itemCount: 20,
-                itemBuilder: (context, index) => Card(
-                  color: const Color(0xFFFFFFFF),
-                  elevation: 10,
-                  child: ListTile(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    title: TextThemedel(
-                      text: "Order no : #123456$index",
-                      color: Colorsdata.black,
-                      fontSize: 14,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: MyApp.height * .015,
-                        ),
-                        TextThemedel(
-                            text:
+            body: TabBarView(
+              children: [
+                Center(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: 20,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => OrderdetailsscreenWrapper(
+                            tab: 1,
+                            orderNumber: "#123456$index",
+                            items: "2",
+                            address:
                                 "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                            distance: "12 km",
+                            time: "25 minutes",
+                          ),
+                        ));
+                      },
+                      child: Card(
+                        color: const Color(0xFFFFFFFF),
+                        elevation: 10,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          title: TextThemedel(
+                            text: "Order no : #123456$index",
                             color: Colorsdata.black,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            fontSize: 12),
-                      ],
-                    ),
-                    trailing: MaterialButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => OrderdetailsscreenWrapper(
-                            tab: 2,
-                            orderNumber: "#123456$index",
-                            items: "2",
-                            address: "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
-                            distance: "12 km",
-                            time: "25 minutes",),
-                        ));
-                      },
-                      color: Colorsdata.darkcolor,
-                      child: TextThemedel(
-                        text: "Details",
-                        color: Colorsdata.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(8),
-                itemCount: 20,
-                itemBuilder: (context, index) => Card(
-                  color: const Color(0xFFFFFFFF),
-                  elevation: 10,
-                  child: ListTile(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    title: TextThemedel(
-                      text: "Order no : #123456$index",
-                      color: Colorsdata.black,
-                      fontSize: 14,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextThemedel(
-                          text: "${index + 2} items",
-                          color: Colorsdata.midcolor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextThemedel(
+                                text: "${index + 2} items",
+                                color: Colorsdata.midcolor,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              SizedBox(
+                                height: MyApp.height * .015,
+                              ),
+                              TextThemedel(
+                                  text:
+                                      "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                                  color: Colorsdata.black,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 14),
+                            ],
+                          ),
+                          trailing: index.isEven
+                              ? MaterialButton(
+                                  onPressed: () {
+                                    _showConfirmationBottomSheet(context);
+                                  },
+                                  color: Colorsdata.darkcolor,
+                                  child: TextThemedel(
+                                    text: "Complete Task",
+                                    color: Colorsdata.white,
+                                  ),
+                                )
+                              : MaterialButton(
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      backgroundColor: Colorsdata.white,
+                                      context: context,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(16)),
+                                      ),
+                                      builder: (context) =>
+                                          DeliveryDetailsBottomSheet(
+                                        distance: "12 km",
+                                        // Example data
+                                        time: "25 minutes",
+                                        // Example data
+                                        address:
+                                            "123 Main Street, Springfield, IL",
+                                        // Example data
+                                        orderNumber: "ORD12345", // Example data
+                                      ),
+                                    );
+                                  },
+                                  color: Colorsdata.darkcolor,
+                                  child: TextThemedel(
+                                    text: "Accept",
+                                    color: Colorsdata.white,
+                                  ),
+                                ),
                         ),
-                      ],
-                    ),
-                    trailing: MaterialButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => OrderdetailsscreenWrapper(
-                            tab: 3,
-                            orderNumber: "#123456$index",
-                            items: "2",
-                            address: "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
-                            distance: "12 km",
-                            time: "25 minutes",),
-                        ));
-                      },
-                      color: Colorsdata.darkcolor,
-                      child: TextThemedel(
-                        text: "Details",
-                        color: Colorsdata.white,
                       ),
                     ),
                   ),
                 ),
-              ),
+                Center(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: 20,
+                    itemBuilder: (context, index) => Card(
+                      color: const Color(0xFFFFFFFF),
+                      elevation: 10,
+                      child: ListTile(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        title: TextThemedel(
+                          text: "Order no : #123456$index",
+                          color: Colorsdata.black,
+                          fontSize: 14,
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: MyApp.height * .015,
+                            ),
+                            TextThemedel(
+                                text:
+                                    "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                                color: Colorsdata.black,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 12),
+                          ],
+                        ),
+                        trailing: MaterialButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => OrderdetailsscreenWrapper(
+                                tab: 2,
+                                orderNumber: "#123456$index",
+                                items: "2",
+                                address:
+                                    "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                                distance: "12 km",
+                                time: "25 minutes",
+                              ),
+                            ));
+                          },
+                          color: Colorsdata.darkcolor,
+                          child: TextThemedel(
+                            text: "Details",
+                            color: Colorsdata.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(8),
+                    itemCount: 20,
+                    itemBuilder: (context, index) => Card(
+                      color: const Color(0xFFFFFFFF),
+                      elevation: 10,
+                      child: ListTile(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        title: TextThemedel(
+                          text: "Order no : #123456$index",
+                          color: Colorsdata.black,
+                          fontSize: 14,
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextThemedel(
+                              text: "${index + 2} items",
+                              color: Colorsdata.midcolor,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ],
+                        ),
+                        trailing: MaterialButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => OrderdetailsscreenWrapper(
+                                tab: 3,
+                                orderNumber: "#123456$index",
+                                items: "2",
+                                address:
+                                    "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+                                distance: "12 km",
+                                time: "25 minutes",
+                              ),
+                            ));
+                          },
+                          color: Colorsdata.darkcolor,
+                          child: TextThemedel(
+                            text: "Details",
+                            color: Colorsdata.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        }));
   }
 }

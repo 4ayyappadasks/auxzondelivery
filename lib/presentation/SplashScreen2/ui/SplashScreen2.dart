@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+import '../../../common/color/color.dart';
+
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key});
 
@@ -11,25 +13,27 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(fontSize: 19.0);
 
-    const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+    var pageDecoration = PageDecoration(
+      titleTextStyle: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      bodyPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       imagePadding: EdgeInsets.zero,
+      boxDecoration: BoxDecoration(
+     color: Colorsdata.white,
+      ),
     );
 
     Widget buildImage(String assetName) {
       return SizedBox.expand(
         child: Image.asset(
           assetName,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       );
     }
 
     return IntroductionScreen(
-      globalBackgroundColor: Colors.white,
+      globalBackgroundColor: Colorsdata.white,
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
       infiniteAutoScroll: true,
@@ -73,9 +77,9 @@ class OnBoardingPage extends StatelessWidget {
         fontWeight: FontWeight.bold,
       ),
       next: const Icon(Icons.arrow_forward, color: Color(0xFFFFFFFF)),
-      done: const TextThemedel(
+      done:  TextThemedel(
         text: "Done",
-        color: Color(0xFFFFFFFF),
+        color: Colorsdata.white,
         fontWeight: FontWeight.bold,
       ),
       curve: Curves.fastLinearToSlowEaseIn,
@@ -92,8 +96,15 @@ class OnBoardingPage extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
-      dotsContainerDecorator: const ShapeDecoration(
-        color: Color(0xFF14411E),
+      dotsContainerDecorator:  ShapeDecoration(
+        gradient: LinearGradient(colors: [
+          Colorsdata.darkcolor,
+          Colorsdata.litecolor,
+           Color(0xFFCCFF69),
+          // Color(0xFFFFEC84),
+          Colorsdata.litecolor,
+          Colorsdata.darkcolor,
+        ],),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
