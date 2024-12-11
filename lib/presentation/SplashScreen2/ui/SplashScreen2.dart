@@ -37,22 +37,42 @@ class OnBoardingPage extends StatelessWidget {
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
       infiniteAutoScroll: true,
+      // pages: [
+      //   PageViewModel(
+      //     title: "Book a ride in seconds",
+      //     body: "Choose your destination, select a ride, and you're ready to go.",
+      //     image: buildImage("assets/splashimage1.png"),
+      //     decoration: pageDecoration,
+      //   ),
+      //   PageViewModel(
+      //     title: "Your safety is our priority",
+      //     body: "All drivers are verified, and rides are monitored for your peace of mind.",
+      //     image: buildImage("assets/splashimage2.png"),
+      //     decoration: pageDecoration,
+      //   ),
+      //   PageViewModel(
+      //     title: "Track your orders",
+      //     body: "Track your orders.",
+      //     image: buildImage("assets/splashimage3.png"),
+      //     decoration: pageDecoration,
+      //   ),
+      // ],
       pages: [
         PageViewModel(
-          title: "Book a ride in seconds",
-          body: "Choose your destination, select a ride, and you're ready to go.",
+          title: "Shop Fresh Groceries",
+          body: "Discover fresh fruits, vegetables, and everyday essentials at unbeatable prices.",
           image: buildImage("assets/splashimage1.png"),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Your safety is our priority",
-          body: "All drivers are verified, and rides are monitored for your peace of mind.",
+          title: "Fast & Reliable Delivery",
+          body: "Get your groceries delivered to your doorstep within minutes.",
           image: buildImage("assets/splashimage2.png"),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Track your orders",
-          body: "Track your orders.",
+          title: "Exclusive Deals & Offers",
+          body: "Save more with exclusive discounts and daily offers tailored for you.",
           image: buildImage("assets/splashimage3.png"),
           decoration: pageDecoration,
         ),
@@ -99,10 +119,10 @@ class OnBoardingPage extends StatelessWidget {
       dotsContainerDecorator:  ShapeDecoration(
         gradient: LinearGradient(colors: [
           Colorsdata.darkcolor,
-          Colorsdata.litecolor,
+          Colorsdata.maincolor,
            Color(0xFFCCFF69),
           // Color(0xFFFFEC84),
-          Colorsdata.litecolor,
+          Colorsdata.maincolor,
           Colorsdata.darkcolor,
         ],),
         shape: RoundedRectangleBorder(

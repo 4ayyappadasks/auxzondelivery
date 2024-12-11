@@ -67,14 +67,16 @@ class Homescreen extends StatelessWidget {
                             indicatorColor: Colorsdata.white,
                             indicatorBorder: Border.all(
                               color: currentStatus == "online"
-                                  ? Colorsdata.midcolor
-                                  : Colorsdata.darkunfocus,
+                                  ? Colorsdata.darkcolor
+                                  : Colorsdata.unfocus,
                               width: 2,
                             ),
                             backgroundColor: currentStatus == "online"
-                                ? Colorsdata.midcolor
+                                ? Colorsdata.darkcolor
                                 : Colorsdata.unfocus,
-                            borderColor: Colorsdata.darkunfocus,
+                            borderColor: currentStatus == "online"
+                                ? Colorsdata.white
+                                : Colorsdata.unfocus,
                           ),
                           current: currentStatus == "online",
                           first: false,
@@ -94,7 +96,7 @@ class Homescreen extends StatelessWidget {
                                 )
                               : TextThemedel(
                                   text: "Offline",
-                                  color: Colorsdata.darkunfocus,
+                                  color: Colorsdata.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10,
                                 ),
