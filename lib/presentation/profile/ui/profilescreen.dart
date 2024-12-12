@@ -30,14 +30,14 @@ class Profilescreen extends StatelessWidget {
               height: MyApp.height * .09,
             ),
             Material(
-              color: Colors.transparent,
+              color:  Colorsdata.white.withOpacity(.8),
               borderRadius: BorderRadius.circular(5),
               elevation: 10,
               child: Container(
                 height: MyApp.height * .1,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Colorsdata.white.withOpacity(.7)),
+                    color: Colorsdata.white.withOpacity(.8)),
                 child: Center(
                     child: ListTile(
                   leading: CircleAvatar(

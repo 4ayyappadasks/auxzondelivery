@@ -43,7 +43,8 @@ class Homescreen extends StatelessWidget {
                   image: currentStatus == "online"
                       ? AssetImage("assets/bgimg.png")
                       : AssetImage("assets/bgimg2.png"),
-                  fit: BoxFit.cover)),
+                  fit: BoxFit.cover)
+          ),
           child: Column(
             children: [
               const SizedBox(height: 20),
@@ -72,7 +73,7 @@ class Homescreen extends StatelessWidget {
                               width: 2,
                             ),
                             backgroundColor: currentStatus == "online"
-                                ? Colorsdata.darkcolor
+                                ? Colorsdata.ddarkcolor
                                 : Colorsdata.unfocus,
                             borderColor: currentStatus == "online"
                                 ? Colorsdata.white
@@ -124,15 +125,16 @@ class Homescreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Material(
+                  color: Colors.white.withOpacity(.5),
                   borderRadius: BorderRadius.circular(10),
-                  elevation: 10,
+                  elevation: 5,
                   child: Container(
                     height: MyApp.height * .25,
                     width: MyApp.width,
                     padding:
                         EdgeInsets.symmetric(horizontal: MyApp.width * .05),
                     decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
+                        color: Colorsdata.white.withOpacity(.8),
                         borderRadius: BorderRadius.circular(10)),
                     child: Row(
                       children: [
@@ -264,10 +266,11 @@ class Homescreen extends StatelessWidget {
               /// builder
               Expanded(
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   padding: const EdgeInsets.all(8),
                   itemCount: 8,
                   itemBuilder: (context, index) => Card(
-                    color: const Color(0xFFFFFFFF),
+                    color: const Color(0xFFFFFFFF).withOpacity(.9),
                     elevation: 10,
                     child: ListTile(
                       contentPadding:
@@ -282,7 +285,7 @@ class Homescreen extends StatelessWidget {
                         children: [
                           TextThemedel(
                             text: "${index + 2} items",
-                            color: Colorsdata.midcolor,
+                            color: Colorsdata.darkcolor,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),

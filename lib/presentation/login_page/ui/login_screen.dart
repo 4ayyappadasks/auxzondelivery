@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               child: Container(
-                color: Colors.black.withOpacity(0.25),
+                color: Colors.black.withOpacity(0.15),
               ),
             ),
             Positioned(

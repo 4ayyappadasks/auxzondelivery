@@ -21,6 +21,7 @@ class Historyscreen extends StatelessWidget {
 
   void _showConfirmationBottomSheet(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colorsdata.white,
       context: context,
       enableDrag: true,
       shape: const RoundedRectangleBorder(

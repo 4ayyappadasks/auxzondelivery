@@ -14,12 +14,13 @@ class OnBoardingPage extends StatelessWidget {
     const bodyStyle = TextStyle(fontSize: 19.0);
 
     var pageDecoration = PageDecoration(
-      titleTextStyle: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+      titleTextStyle:
+          const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       bodyPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       imagePadding: EdgeInsets.zero,
       boxDecoration: BoxDecoration(
-     color: Colorsdata.white,
+        color: Colorsdata.white,
       ),
     );
 
@@ -37,30 +38,11 @@ class OnBoardingPage extends StatelessWidget {
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
       infiniteAutoScroll: true,
-      // pages: [
-      //   PageViewModel(
-      //     title: "Book a ride in seconds",
-      //     body: "Choose your destination, select a ride, and you're ready to go.",
-      //     image: buildImage("assets/splashimage1.png"),
-      //     decoration: pageDecoration,
-      //   ),
-      //   PageViewModel(
-      //     title: "Your safety is our priority",
-      //     body: "All drivers are verified, and rides are monitored for your peace of mind.",
-      //     image: buildImage("assets/splashimage2.png"),
-      //     decoration: pageDecoration,
-      //   ),
-      //   PageViewModel(
-      //     title: "Track your orders",
-      //     body: "Track your orders.",
-      //     image: buildImage("assets/splashimage3.png"),
-      //     decoration: pageDecoration,
-      //   ),
-      // ],
       pages: [
         PageViewModel(
           title: "Shop Fresh Groceries",
-          body: "Discover fresh fruits, vegetables, and everyday essentials at unbeatable prices.",
+          body:
+              "Discover fresh fruits, vegetables, and everyday essentials at unbeatable prices.",
           image: buildImage("assets/splashimage1.png"),
           decoration: pageDecoration,
         ),
@@ -72,7 +54,8 @@ class OnBoardingPage extends StatelessWidget {
         ),
         PageViewModel(
           title: "Exclusive Deals & Offers",
-          body: "Save more with exclusive discounts and daily offers tailored for you.",
+          body:
+              "Save more with exclusive discounts and daily offers tailored for you.",
           image: buildImage("assets/splashimage3.png"),
           decoration: pageDecoration,
         ),
@@ -97,7 +80,7 @@ class OnBoardingPage extends StatelessWidget {
         fontWeight: FontWeight.bold,
       ),
       next: const Icon(Icons.arrow_forward, color: Color(0xFFFFFFFF)),
-      done:  TextThemedel(
+      done: TextThemedel(
         text: "Done",
         color: Colorsdata.white,
         fontWeight: FontWeight.bold,
@@ -107,24 +90,25 @@ class OnBoardingPage extends StatelessWidget {
       controlsPadding: kIsWeb
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-      dotsDecorator: const DotsDecorator(
-        activeColor: Color(0xFF349F52),
+      dotsDecorator:  DotsDecorator(
+        activeColor: Colorsdata.white,
         size: Size(10.0, 10.0),
-        color: Color(0xFFFFFFFF),
+        color: Colorsdata.unfocus,
         activeSize: Size(22.0, 10.0),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
-      dotsContainerDecorator:  ShapeDecoration(
-        gradient: LinearGradient(colors: [
-          Colorsdata.darkcolor,
-          Colorsdata.maincolor,
-           Color(0xFFCCFF69),
-          // Color(0xFFFFEC84),
-          Colorsdata.maincolor,
-          Colorsdata.darkcolor,
-        ],),
+      dotsContainerDecorator: ShapeDecoration(
+        color: Colorsdata.maincolor,
+        // gradient: LinearGradient(
+        //   colors: [
+        //     Colorsdata.maincolor,
+        //     Color(0xFFCCFF69),
+        //     // Color(0xFFFFEC84),
+        //     Colorsdata.maincolor,
+        //   ],
+        // ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),

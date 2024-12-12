@@ -5,6 +5,7 @@ class Colorsdata {
  static final litecolor = Color(0xFFB0FD9F);
  static final midcolor = Color(0xFFFFDD00);
  static final darkcolor = Color(0xFF315728);
+ static final ddarkcolor = Color(0xFF278611);
  static final black = Color(0xFF000000);
  static final white = Color(0xFFFFFFFF);
  static final unfocus = Color(0xFFB3C3C3);
