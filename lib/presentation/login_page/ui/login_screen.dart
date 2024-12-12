@@ -1,3 +1,4 @@
+import 'package:auxzondeliveryapp/common/color/color.dart';
 import 'package:auxzondeliveryapp/common/textfont/textfont.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -88,9 +89,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const TextThemedel(
+                  TextThemedel(
                     text: 'Enter a valid 10 digit number you will receive an SMS verification code.',
-                    color: Color(0xFFBABBBA),
+                    color: Colorsdata.darkunfocus,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
@@ -115,9 +116,9 @@ class LoginScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const TextThemedel(
+                  TextThemedel(
                     text: 'By continuing, you agree to our Terms & Conditions.',
-                    color: Color(0xFFBABBBA),
+                    color: Colorsdata.darkunfocus,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),

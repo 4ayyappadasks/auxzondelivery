@@ -142,7 +142,7 @@ class Historyscreen extends StatelessWidget {
               bottom: TabBar(
                 labelColor: Colorsdata.black,
                 unselectedLabelColor: Colorsdata.unfocus,
-                indicatorColor: Colorsdata.midcolor,
+                indicatorColor: Colorsdata.darkcolor,
                 tabs: [
                   Tab(text: "Assigned"),
                   Tab(text: "Completed"),
@@ -187,7 +187,7 @@ class Historyscreen extends StatelessWidget {
                             children: [
                               TextThemedel(
                                 text: "${index + 2} items",
-                                color: Colorsdata.midcolor,
+                                color: Colorsdata.maincolor,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -324,7 +324,7 @@ class Historyscreen extends StatelessWidget {
                           children: [
                             TextThemedel(
                               text: "${index + 2} items",
-                              color: Colorsdata.midcolor,
+                              color: Colorsdata.maincolor,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),

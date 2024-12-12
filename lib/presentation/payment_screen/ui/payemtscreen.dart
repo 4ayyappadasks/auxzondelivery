@@ -39,7 +39,7 @@ class Payemtscreen extends StatelessWidget {
               TabBar(
                 labelColor: Colorsdata.black,
                 unselectedLabelColor: Colorsdata.unfocus,
-                indicatorColor: Colorsdata.midcolor,
+                indicatorColor: Colorsdata.darkcolor,
                 tabs: const [
                   Tab(
                     text: "Daily",
