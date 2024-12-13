@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import '../../../common/bottomsheet/ui/bottomsheet.dart';
+import '../../../common/Bottom_Navigation_Bar/ui/bottom_navigation_bar.dart';
 import '../../../common/textfont/textfont.dart';
 import '../../../main.dart';
 import '../../login_page/ui/login_screen.dart';

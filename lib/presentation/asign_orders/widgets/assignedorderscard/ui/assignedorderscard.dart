@@ -1,38 +1,35 @@
+import 'package:auxzondeliveryapp/common/textfont/textfont.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../common/color/color.dart';
-import '../../../../../common/textfont/textfont.dart';
 import '../../../../../main.dart';
 
-class Ordercard extends StatelessWidget {
-  final String orderno;
+class Assignedorderscard extends StatelessWidget {
 
-  final String items;
+  final int orderno;
+
+  final int itemsno;
 
   final String location;
 
-  final int index;
-
   final VoidCallback function;
 
-  const Ordercard({
+  const Assignedorderscard({
     super.key,
     required this.orderno,
-    required this.items,
+    required this.itemsno,
     required this.location,
-    required this.index,
     required this.function,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colorsdata.white.withOpacity(.9),
+      color: const Color(0xFFFFFFFF),
       elevation: 10,
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         title: TextThemedel(
-          text: "Order no : $orderno${index}",
+          text: "Order no : #$orderno",
           color: Colorsdata.black,
           fontSize: 14,
         ),
@@ -40,8 +37,8 @@ class Ordercard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextThemedel(
-              text: "${items} items",
-              color: Colorsdata.darkcolor,
+              text: "$itemsno items",
+              color: Colorsdata.maincolor,
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
@@ -49,10 +46,9 @@ class Ordercard extends StatelessWidget {
               height: MyApp.height * .015,
             ),
             TextThemedel(
-              text:location,
-              color: Colorsdata.black,
-              fontSize: 14,
-            ),
+                text:location,
+                color: Colorsdata.black,
+                fontSize: 14),
           ],
         ),
         trailing: MaterialButton(

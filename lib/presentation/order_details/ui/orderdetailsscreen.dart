@@ -96,7 +96,7 @@ class Orderdetailsscreen extends StatelessWidget {
             TextThemedel(
               text: "Items: $items",
               fontSize: 16,
-              color: Colorsdata.midcolor,
+              color: Colorsdata.maincolor,
             ),
             const SizedBox(height: 8),
             TextThemedel(

@@ -89,9 +89,9 @@ class DeliveryDetailsBottomSheet extends StatelessWidget {
           SlideAction(
             text: "Slide to Accept",
             textColor: Colorsdata.black,
-            innerColor: Colorsdata.unfocus,
+            innerColor: Colorsdata.maincolor,
             outerColor: Colorsdata.white,
-            sliderButtonIcon: Icon(Icons.check, color: Colorsdata.maincolor),
+            sliderButtonIcon: Icon(Icons.check, color: Colorsdata.white),
             onSubmit: () {
               Navigator.pop(context);
             },

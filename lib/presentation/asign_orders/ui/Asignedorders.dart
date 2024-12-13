@@ -1,10 +1,11 @@
+import 'package:auxzondeliveryapp/presentation/asign_orders/widgets/assignedorderscard/ui/assignedorderscard.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/bottomsheet/ui/bottomsheet.dart';
+import '../../../common/Bottom_Navigation_Bar/ui/bottom_navigation_bar.dart';
 import '../../../common/color/color.dart';
 import '../../../common/textfont/textfont.dart';
 import '../../../main.dart';
-import '../../home_page/widgets/showbottosheet/ui/showbottomsheetss.dart';
+import '../../../common/accept_bottosheet/ui/accept_bottomsheet.dart';
 
 class AsignedordersWrapper extends StatelessWidget {
   const AsignedordersWrapper({super.key});
@@ -20,7 +21,7 @@ class Asignedorders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colorsdata.liteunfocus,
       appBar: AppBar(
         forceMaterialTransparency: true,
@@ -29,7 +30,9 @@ class Asignedorders extends StatelessWidget {
           icon: Icon(Icons.arrow_back_ios, color: Colorsdata.black),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const BottomsheetWrapper(pageno: 0,),
+              builder: (context) => const BottomsheetWrapper(
+                pageno: 0,
+              ),
             )); // Back navigation
           },
         ),
@@ -45,58 +48,25 @@ class Asignedorders extends StatelessWidget {
         shrinkWrap: true,
         padding: const EdgeInsets.all(8),
         itemCount: 20,
-        itemBuilder: (context, index) => Card(
-          color: const Color(0xFFFFFFFF),
-          elevation: 10,
-          child: ListTile(
-            contentPadding:
-            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            title: TextThemedel(
-              text: "Order no : #123456$index",
-              color: Colorsdata.black,
-              fontSize: 14,
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextThemedel(
-                  text: "${index + 2} items",
-                  color: Colorsdata.midcolor,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(height: MyApp.height*.015,),
-                TextThemedel(
-                  text:
-                  "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
-                  color: Colorsdata.black,
-                  fontSize: 14
-                ),
-              ],
-            ),
-            trailing: MaterialButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  backgroundColor: Colorsdata.white,
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                  ),
-                  builder: (context) => DeliveryDetailsBottomSheet(
-                    distance: "12 km", // Example data
-                    time: "25 minutes", // Example data
-                    address: "123 Main Street, Springfield, IL", // Example data
-                    orderNumber: "ORD12345", // Example data
-                  ),
-                );
-              },
-              color: Colorsdata.darkcolor,
-              child: TextThemedel(
-                text: "Accept",
-                color: Colorsdata.white,
-              ),
-            ),
-          ),
+        itemBuilder: (context, index) => Assignedorderscard(
+          orderno: 123456,
+          itemsno: index+1,
+          location: "No. 46/2978, Second Floor Third Avenue, Sobha Road, Vennala, Kochi, Kerala 682028, India",
+          function: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colorsdata.white,
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                      ),
+                      builder: (context) => DeliveryDetailsBottomSheet(
+                        distance: "12 km",
+                        time: "25 minutes",
+                        address: "123 Main Street, Springfield, IL",
+                        orderNumber: "ORD12345",
+                      ),
+                    );
+          },
         ),
       ),
     );
